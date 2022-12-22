@@ -13,18 +13,8 @@ const Navbar = () => {
 }
 document.addEventListener('mousedown',closeOpenMenus)
 
-  // const btnref = useRef();
-  // useEffect(() => {
-  //   const closeDropDown = (e) => {
-  //     if (e.path[0] !== btnref.current) {
-  //       setNav(false);
-  //     }
-  //   };
-  //   document.body.addEventListener('click', closeDropDown);
-  //   return () => document.body.removeEventListener('click', closeDropDown)
-  // }, []);
+const navStyle = "border-b-2 border-zinc-300 w-full hover:border-indigo-600 ";
 
-  const navStyle = "border-b-2 border-zinc-300 w-full hover:border-indigo-600 ";
   return (
     <nav className="w-screen fixed z-30 h-[60px] bg-zinc-200 drop-shadow-lg">
       <div className="px-2 flex justify-between items-center w-full h-full">
@@ -67,27 +57,27 @@ document.addEventListener('mousedown',closeOpenMenus)
         }
       >
         <AnchorLink href="#home">
-          <li onClick={() => setNav((prev) => !prev)} className={navStyle}>
+          <li onClick={() => setNav(!n)} className={navStyle}>
             Home
           </li>
         </AnchorLink>
         <AnchorLink href="#about">
-          <li onClick={() => setNav((prev) => !prev)} className={navStyle}>About</li>
+          <li onClick={() => setNav(!n)} className={navStyle}>About</li>
         </AnchorLink>
         <AnchorLink href="#support">
-          <li onClick={() => setNav((prev) => !prev)} className={navStyle}>Support</li>
+          <li onClick={() => setNav(!n)} className={navStyle}>Support</li>
         </AnchorLink>
         <AnchorLink href="#platforms">
-          <li onClick={() => setNav((prev) => !prev)} className={navStyle}>Platforms</li>
+          <li onClick={() => setNav(!n)} className={navStyle}>Platforms</li>
         </AnchorLink>
         <AnchorLink href="#pricing">
-          <li onClick={() => setNav((prev) => !prev)} className={navStyle}>Pricing</li>
+          <li onClick={() => setNav(!n)} className={navStyle}>Pricing</li>
         </AnchorLink>
         <div className="flex flex-col my-4">
-          <button className="bg-transparent hover:bg-zinc-300 duration-500 text-indigo-600 px-8 py-3 mb-4">
+          <button className="bg-transparent text-indigo-600 px-8 py-3 mb-4">
             Sign In
           </button>
-          <button className="px-8 py-3 duration-500">Sign Up</button>
+          <button className="px-8 py-3">Sign Up</button>
         </div>
       </ul>
     </nav>
