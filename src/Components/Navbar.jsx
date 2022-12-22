@@ -1,9 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { HiMenu, HiMenuAlt3 } from "react-icons/hi";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
+
+  const navMenu = useRef()
+  const closeOpenMenus = (e)=>{
+    if(navMenu.current && nav && !navMenu.current.contains(e.target)){
+      setNav(false)
+    }
+}
+document.addEventListener('mousedown',closeOpenMenus)
+
+  // const btnref = useRef();
+  // useEffect(() => {
+  //   const closeDropDown = (e) => {
+  //     if (e.path[0] !== btnref.current) {
+  //       setNav(false);
+  //     }
+  //   };
+  //   document.body.addEventListener('click', closeDropDown);
+  //   return () => document.body.removeEventListener('click', closeDropDown)
+  // }, []);
+
   const navStyle = "border-b-2 border-zinc-300 w-full hover:border-indigo-600 ";
   return (
     <nav className="w-screen fixed z-30 h-[60px] bg-zinc-200 drop-shadow-lg">
@@ -35,11 +55,11 @@ const Navbar = () => {
           <button className="px-8 py-3">Sign Up</button>
         </div>
         {/* nav menu */}
-        <div className="sm:hidden mr-4 z-10" onClick={() => setNav(!nav)}>
+        <div ref={navMenu} className="sm:hidden mr-4 z-10" onClick={() => setNav(!nav)}>
           {nav ? <HiMenuAlt3 size={30} /> : <HiMenu size={30} />}
         </div>
       </div>
-      <ul
+      <ul 
         className={
           !nav
             ? "mt-[-140%] duration-500"
